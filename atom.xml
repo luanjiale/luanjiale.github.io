@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://luanjiale.gitee.io/"/>
-  <updated>2020-06-14T14:53:56.869Z</updated>
+  <updated>2020-06-14T17:05:47.944Z</updated>
   <id>https://luanjiale.gitee.io/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>HTML基本语法</title>
+    <link href="https://luanjiale.gitee.io/2020/06/15/HTML%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/"/>
+    <id>https://luanjiale.gitee.io/2020/06/15/HTML%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/</id>
+    <published>2020-06-14T16:52:57.000Z</published>
+    <updated>2020-06-14T17:05:47.944Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;前端序言&quot;&gt;&lt;a href=&quot;#前端序言&quot; class=&quot;headerlink&quot; title=&quot;前端序言&quot;&gt;&lt;/a&gt;前端序言&lt;/h1&gt;&lt;p&gt;三要素：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;[HTML](#HTML 5)&lt;/li&gt;
+&lt;li&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+    
+      <category term="前端学习" scheme="https://luanjiale.gitee.io/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="-前端 -Html" scheme="https://luanjiale.gitee.io/tags/%E5%89%8D%E7%AB%AF-Html/"/>
+    
+  </entry>
   
   <entry>
     <title>Wechat</title>
