@@ -108,14 +108,14 @@
 
 
 
-<meta name="description" content="firebase.initializeApp({       apiKey: AIzaSyChSwtky9LCLaIOTS8fmke5zO_CtoEcIwQ       projectId: luanjiale-3a7ef  &#x2F;&#x2F;你的projectId    })     var title&#x3D; &#39;&#39;;    var count &#x3D; 0;    var url &#x3D;">
+<meta name="description" content="AV.initialize(&quot;mSPsfbpXw58QP6gKRLWUVwbp-gzGzoHsz&quot;, &quot;MTupl8s8oxpPONeMUjooj8Tn&quot;);    var time&#x3D;0   var title&#x3D;&quot;&quot;   var url&#x3D;&quot;&quot;   var query &#x3D; new AV.Query(&#39;Counter&#39;);   query.notEqualTo(&#39;id&#39;,0);   query.d">
 <meta property="og:type" content="website">
 <meta property="og:title" content="文章热度排行">
-<meta property="og:url" content="https://luanjiale.gitee.io/top/index.html">
+<meta property="og:url" content="https://luanjiale.gitee.io/hot/index.html">
 <meta property="og:site_name" content="FullStack的博客">
-<meta property="og:description" content="firebase.initializeApp({       apiKey: AIzaSyChSwtky9LCLaIOTS8fmke5zO_CtoEcIwQ       projectId: luanjiale-3a7ef  &#x2F;&#x2F;你的projectId    })     var title&#x3D; &#39;&#39;;    var count &#x3D; 0;    var url &#x3D;">
-<meta property="article:published_time" content="2020-06-14T13:01:56.000Z">
-<meta property="article:modified_time" content="2020-06-14T13:24:31.029Z">
+<meta property="og:description" content="AV.initialize(&quot;mSPsfbpXw58QP6gKRLWUVwbp-gzGzoHsz&quot;, &quot;MTupl8s8oxpPONeMUjooj8Tn&quot;);    var time&#x3D;0   var title&#x3D;&quot;&quot;   var url&#x3D;&quot;&quot;   var query &#x3D; new AV.Query(&#39;Counter&#39;);   query.notEqualTo(&#39;id&#39;,0);   query.d">
+<meta property="article:published_time" content="2020-06-14T14:29:59.000Z">
+<meta property="article:modified_time" content="2020-06-14T14:58:02.001Z">
 <meta property="article:author" content="Lu@nJiale">
 <meta name="twitter:card" content="summary">
 
@@ -147,7 +147,7 @@
 
 
 
-  <link rel="canonical" href="https://luanjiale.gitee.io/top/"/>
+  <link rel="canonical" href="https://luanjiale.gitee.io/hot/"/>
 
 
 
@@ -270,10 +270,10 @@
         </li>
       
         
-        <li class="menu-item menu-item-top">
-          <a href="/top/" rel="section">
+        <li class="menu-item menu-item-hot">
+          <a href="/hot/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-signal"></i> <br />
             
             文章热度排行
           </a>
@@ -351,42 +351,30 @@
       <div class="post-body">
         
         
-          <div id="top" style="margin-top:80px;">
-
-</div>
-
-<!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
-<script src="https://www.gstatic.com/firebasejs/5.10.1/firebase-app.js"></script>
-
-<!-- Add Firebase products that you want to use -->
-<script src="https://www.gstatic.com/firebasejs/5.10.1/firebase-auth.js"></script>
-<script src="https://www.gstatic.com/firebasejs/5.10.1/firebase-database.js"></script>
-
-<script src="https://www.gstatic.com/firebasejs/5.10.1/firebase-firestore.js"></script>
-
-<script>
-
-  firebase.initializeApp({
-      apiKey: AIzaSyChSwtky9LCLaIOTS8fmke5zO_CtoEcIwQ
-      projectId: luanjiale-3a7ef  //你的projectId
-   })
-
-   var title= '';
-   var count = 0;
-   var url = '';
-   const db = firebase.firestore();
-   var collection =  'articles'; //主题配置文件配置的collection //';
-   db.collection(collection).orderBy('count', 'desc').limit(10).get().then((querySnapshot) => {
-       querySnapshot.forEach((doc) => {
-       //  console.log(doc.id, " => ", doc.data());
-           title = doc.id;
-           count = doc.data().count;
-           url = doc.data().url;
-           var content="<h5><p>"+"<font color='#1C1C1C'>"+"【文章热度: "+count+" ℃】"+"</font>" + '&emsp;&emsp;' + "<span'><a href='"+url+"'>"+title+"</a></span>"+"</p></h5>";
-           document.getElementById("top").innerHTML+=content
-       });
-   });
-
+          <div id="hot"></div>
+<script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+<script>AV.initialize("mSPsfbpXw58QP6gKRLWUVwbp-gzGzoHsz", "MTupl8s8oxpPONeMUjooj8Tn");</script>
+<script type="text/javascript">
+  var time=0
+  var title=""
+  var url=""
+  var query = new AV.Query('Counter');
+  query.notEqualTo('id',0);
+  query.descending('time');
+  query.limit(1000);
+  query.find().then(function (todo) {
+    for (var i=0;i<1000;i++){
+      var result=todo[i].attributes;
+      time=result.time;
+      title=result.title;
+      url=result.url;
+      // var content="<a href='"+"https://hoxis.github.io"+url+"'>"+title+"</a>"+"<br>"+"<font color='#fff'>"+"阅读次数："+time+"</font>"+"<br><br>";
+      var content="<p>"+"<font color='#1C1C1C'>"+"【文章热度:"+time+"℃】"+"</font>"+"<a href='"+"https://hoxis.github.io"+url+"'>"+title+"</a>"+"</p>";
+      document.getElementById("top").innerHTML+=content
+    }
+  }, function (error) {
+    console.log("error");
+  });
 </script>
         
       </div>
@@ -405,13 +393,6 @@
 
 
           
-
-  
-    <div class="comments" id="comments">
-    </div>
-  
-
-
 
         </div>
         
@@ -1111,104 +1092,130 @@
   
 
   
-  <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase-firestore.js"></script>
-  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("<app_id>", "<app_key>");</script>
   <script>
-    (function () {
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
 
-      firebase.initializeApp({
-        apiKey: 'AIzaSyChSwtky9LCLaIOTS8fmke5zO_CtoEcIwQ',
-        projectId: 'luanjiale-3a7ef'
-      })
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
 
-      function getCount(doc, increaseCount) {
-        //increaseCount will be false when not in article page
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
 
-        return doc.get().then(function (d) {
-          var count
-          if (!d.exists) { //has no data, initialize count
-            if (increaseCount) {
-              doc.set({
-                count: 1
-              })
-              count = 1
-            }
-            else {
-              count = 0
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
             }
           }
-          else { //has data
-            count = d.data().count
-            if (increaseCount) {
-              if (!(window.localStorage && window.localStorage.getItem(title))) { //if first view this article
-                doc.set({ //increase count
-                  count: count + 1
-                })
-                count++
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
               }
-            }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
           }
-          if (window.localStorage && increaseCount) { //mark as visited
-            localStorage.setItem(title, true)
-          }
-
-          return count
-        })
-      }
-
-      function appendCountTo(el) {
-        return function (count) {
-          $(el).append(
-            $('<span>').addClass('post-visitors-count').append(
-              $('<span>').addClass('post-meta-divider').text('|')
-            ).append(
-              $('<span>').addClass('post-meta-item-icon').append(
-                $('<i>').addClass('fa fa-users')
-              )
-              ).append($('<span>').text('热度 ' + count))
-          )
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
         }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
       }
-
-      var db = firebase.firestore()
-      var articles = db.collection('articles')
-
-      //https://hexo.io/zh-tw/docs/variables.html
-      var isPost = '文章热度排行'.length > 0
-      var isArchive = '' === 'true'
-      var isCategory = ''.length > 0
-      var isTag = ''.length > 0
-
-      if (isPost) { //is article page
-        var title = '文章热度排行'
-        var doc = articles.doc(title)
-
-        getCount(doc, true).then(appendCountTo($('.post-meta')))
-      }
-      else if (!isArchive && !isCategory && !isTag) { //is index page
-        var titles = [] //array to titles
-
-        var postsstr = '' //if you have a better way to get titles of posts, please change it
-        eval(postsstr)
-
-        var promises = titles.map(function (title) {
-          return articles.doc(title)
-        }).map(function (doc) {
-          return getCount(doc)
-        })
-        Promise.all(promises).then(function (counts) {
-          var metas = $('.post-meta')
-          counts.forEach(function (val, idx) {
-            appendCountTo(metas[idx])(val)
-          })
-        })
-      }
-    })()
+    });
   </script>
 
 
+
   
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
 
   
   
